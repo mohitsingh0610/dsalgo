@@ -1,6 +1,6 @@
 package com.learn.dsalgo.arrays;
 
-@SuppressWarnings("*")
+@SuppressWarnings("")
 public class DynamicArray<T> {
 
     private T[] arr;
@@ -33,10 +33,21 @@ public class DynamicArray<T> {
         return arr[i];
     }
 
+    /**
+     * Replaces the element at given index with given value.
+     * Complexity - O(1)
+     * @param element
+     * @param i
+     */
     public void set(T element, int i){
         arr[i] =  element;
     }
 
+    /**
+     * Add the element at end of the array.
+     * Complexity - O(n)
+     * @param t
+     */
     public void add(T t){
         if(len + 1 >= capacity){
             if(capacity ==0 ) capacity =1;
@@ -50,6 +61,14 @@ public class DynamicArray<T> {
         arr[len++] = t;
     }
 
+    /**
+     * Removes element from the array at given index. 
+     * Note - We could just removed the element at given index but shifted all elements in left by one position but new array is created because size method will not work 
+     * properly if we just shift the elements.
+     * Complexity - O(n) 
+     * @param rm_idx
+     * @return
+     */
     public T removeAt(int rm_idx){
         if(rm_idx > len || rm_idx<0) throw new  ArrayIndexOutOfBoundsException();
         T data = arr[rm_idx];
@@ -63,22 +82,36 @@ public class DynamicArray<T> {
         return data;
     }
 
+    /**
+     * Removes element from array
+     * Complexity - O(n)
+     * @param obj
+     * @return
+     */
     public boolean remove(T obj){
-        for(int i= 0; i< len; i++){
-            if(arr[i].equals(obj)){
-               removeAt(i);
-               return true;
-            }
-        }
-        return false;
+        int i = indexOf(obj);
+        if(i == -1){
+            return false;
+        };
+        removeAt(i);
+        return true;
     }
 
-
+    /**
+     * Checks if array contains given element 
+     * @param obj
+     * @return
+     */
     public boolean contains(T obj){
         return indexOf(obj) != -1;
     }
 
-
+    /**
+     * Returns the index of the given element
+     * Complexity - O(n)
+     * @param obj
+     * @return
+     */
     public int indexOf(T obj){
         for(int i= 0; i< len; i++){
             if(arr[i].equals(obj)){
