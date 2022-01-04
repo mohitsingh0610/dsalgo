@@ -4,6 +4,9 @@ import java.util.Arrays;
 import java.util.LinkedList;
 import java.util.List;
 
+
+//Also called Subsequence.
+//While the given pattern is a sequence, subsequence contain elements whose subscripts are increasing in the original sequence. {1, 3} {1，4} etc. While the given pattern is a set, subset contain any possible combinations of original set.
 public class PritingSubset {
     
     private static int totalSubsets = 0;
