@@ -7,6 +7,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Queue;
 import java.util.Scanner;
+import java.util.Stack;
 
 public class CustomGraph<T> {
 
@@ -57,6 +58,8 @@ public class CustomGraph<T> {
     /**
      * BFS is implemented using queque. O(V+E) where V is a number of vertices in
      * the graph and E is a number of edges in the graph.
+     * Takes more space than dfs.
+     * Returns the shortest path between two nodes.
      */
     public int bfs(T source, T destination) {
         List<T> visited = new ArrayList<>(vertices);
@@ -86,7 +89,7 @@ public class CustomGraph<T> {
         }
         T cur = destination;
         int distance = 0;
-        while (nodeToParentMap.get(cur) != cur) {
+        while (nodeToParentMap.get(cur) != null && nodeToParentMap.get(cur) != cur) {
             System.out.print(cur + " -> ");
             cur = nodeToParentMap.get(cur);
             distance++;
@@ -94,6 +97,33 @@ public class CustomGraph<T> {
         System.out.print(source);
         System.out.println();
         return distance;
+    }
+
+    /**
+     * 
+     * BFS is implemented using stack. O(V) where V is a number of vertices in the
+     * graph.
+     * Check if the path exist between two nodes are not.
+     */
+    public boolean dfs(T source, T destination) {
+        List<T> visited = new ArrayList<>(vertices);
+        Stack<T> stack = new Stack<>();
+        visited.add(source);
+        stack.push(source);
+        while (!stack.isEmpty()) {
+            T current = stack.pop();
+            if (current.equals(destination)) {
+                return true;
+            }
+            List<T> neighbours = adj.get(current);
+            for (T neighbour : neighbours) {
+                if (!visited.contains(neighbour)) {
+                    stack.push(neighbour);
+                    visited.add(neighbour);
+                }
+            }
+        }
+        return false;
     }
 
     public static void main(String[] args) {
@@ -111,6 +141,34 @@ public class CustomGraph<T> {
          * Integer destination = sc.nextInt();
          * graph.addEdge(source, destination);
          * }
+         * 
+         * Scenario 1
+         * -----------
+         * Enter the number of vertices and edges
+         * 5 6
+         * Enter 6 edges
+         * A C
+         * A B
+         * C D
+         * B D
+         * C E
+         * D E
+         * E -> C -> A
+         * Shortest distance is 2
+         * If path exists - true
+         * 
+         * Scenario 2
+         * ---------
+         * Enter the number of vertices and edges
+         * 5 4
+         * Enter 4 edges
+         * A C
+         * A b
+         * C D
+         * B D
+         * A
+         * Shortest distance is 0
+         * If path exists - false
          */
         CustomGraph<String> graph = new CustomGraph<>(v);
 
@@ -122,6 +180,7 @@ public class CustomGraph<T> {
         }
         // graph.print();
         System.out.println("Shortest distance is " + graph.bfs("A", "E"));
+        System.out.println("If path exists - " + graph.dfs("A", "E"));
         sc.close();
     }
 
