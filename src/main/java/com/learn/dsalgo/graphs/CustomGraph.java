@@ -101,7 +101,7 @@ public class CustomGraph<T> {
 
     /**
      * 
-     * BFS is implemented using stack. O(V) where V is a number of vertices in the
+     * DFS is implemented using stack. O(V) where V is a number of vertices in the
      * graph.
      * Check if the path exist between two nodes are not.
      */
