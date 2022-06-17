@@ -10,7 +10,7 @@ public class PrintNNumbers {
         if(n < 1){
             return ;
         }
-        System.out.println(n);
+        //System.out.println(n);
         print(n -1);
         System.out.println(n);
     }
