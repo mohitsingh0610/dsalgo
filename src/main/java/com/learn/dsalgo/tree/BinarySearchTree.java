@@ -207,6 +207,13 @@ public class BinarySearchTree<T extends Comparable<T>>  {
     return node;
   }
 
+  public int height(Node<T> root){
+    if(root == null){
+      return 0;
+    }
+    return  1 + Math.max(height(root.right), height(root.left));
+  }
+
    // Helper method to find the leftmost node (which has the smallest value)
    private Node<T> findMin(Node<T> node) {
     while (node.left != null) node = node.left;
@@ -229,5 +236,7 @@ public class BinarySearchTree<T extends Comparable<T>>  {
     System.out.println();
     System.out.println("-----PostOrder----");
     bst.postOrder(bst.root);
+    System.out.println("-----Height-----");
+    System.out.println(bst.height(bst.root));
   }
 }

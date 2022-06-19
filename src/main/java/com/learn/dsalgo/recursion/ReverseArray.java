@@ -4,20 +4,21 @@ public class ReverseArray {
     
     public static void main(String[] str){
         Integer[] arr = {1,4,5,6,8,8,9,10};
-        reverse(arr, 0, arr.length-1);
+        reverse(arr, 0);
         for (int i : arr) {
             System.out.println(i);
         }
     }
 
-    static void reverse(Integer[] a, int l, int r){
+    static void reverse(Integer[] a, int i){
           
-        if(l > r || l==r){
+        int n = a.length;
+        if(i >= n/2){
             return ;
         }
-        a[r] = a[r] + a[l];
-        a[l] = a[r] - a[l];
-        a[r] = a[r] - a[l];
-        reverse(a, l+1, r-1);
+        a[n-i-1] = a[n-i-1] + a[i];
+        a[i] = a[n-i-1] - a[i];
+        a[n-i-1] = a[n-i-1] - a[i];
+        reverse(a, i+1);
     }
 }
