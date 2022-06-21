@@ -15,12 +15,12 @@ public class TowerOfHanoi {
       sc.close();
     }
     
-    private static void toh(int n, String a, String b, String c){
+    private static void toh(int n, String from_rod, String to_rod, String aux_rod){
         if(n <=0 ){
             return;
         }
-        toh(n-1,a,c,b); //will print the instruction to move n-1 disks from tower a to tower c using tower b adhering to rules.
-        System.out.println(n + "["+ a + "->" + b + "]");
-        toh(n-1,c,b,a); //will print the instruction to move n-1 disks from tower c to tower b using tower a adhering to rules.
+        toh(n-1,from_rod, aux_rod, to_rod); //will print the instruction to move n-1 disks from tower a to tower c using tower b adhering to rules.
+        System.out.println(n + "["+ from_rod + "->" + to_rod + "]");
+        toh(n-1, aux_rod, to_rod, from_rod); //will print the instruction to move n-1 disks from tower c to tower b using tower a adhering to rules.
     }
 }
