@@ -45,13 +45,18 @@ public class FirstNegativeNumberInWindowSizeK {
         int i = 0;
         int j = 0;
         while(j<n){
+            //keep adding the negative numbers in a temp list
             if(arr.get(j) < 0){
                temp.add(arr.get(j));
             }
             if(j-i+1 ==k){
+                //once the window is hit, the first element in the temp linked list will the first negative number in the given window. If temp list empty, it means
+                //that there is no negative number in the window
                if(temp.size() > 0){
                    int firstNegative = temp.get(0);
                    result.add(firstNegative);
+                   //check if the first element no in the window is the first negative. If yes, then remove it from temp ll because it wont be part of 
+                   //the next window 
                    if(arr.get(i) == firstNegative){
                     temp.remove(0); 
                    }
