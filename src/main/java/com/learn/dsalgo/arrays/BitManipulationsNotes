@@ -1,0 +1,36 @@
+1. Number of bits in binary representation of decimal number is floor(log₂n) + 1
+
+Left Shift Operators
+--------------------
+
+1. a>>1 is equal to divide the number by 2. This property is useful when we have to divide a number by 2 in a loop. Rightshift operator is faster than
+   divide operation.
+
+2. a<<1 is equal to multiply the number by 2. 
+
+Even-Odd
+--------
+If (a&1) is 0 then its even, else its odd no. 
+
+Swap two numbers
+----------------
+  a = a^b;
+  b = a^b;
+  a = a^b;
+
+Bit Masking
+-----------
+1. Find ith bit in number n :-
+   i. mask = 1<<i;
+   ii. ans = mask & n; 
+
+2. Set the ith bit in number n :- (Setting a bit means change the bit to 1 if its 0)
+   i. mask = 1<<i;
+   ii. ans = mask || n; 
+
+3. Clear the ith in number n :- (Clearing a bit means change the bit to 0 if its 1)
+   i. mask = 1<<i;
+   ii. ans = (~mask) & n; 
+
+4.  /* Get the rightmost set bit in set_bit_no */
+    set_bit_no = xor1 & ~(xor1 - 1);   
