@@ -4,7 +4,16 @@ package com.learn.dsalgo.recursion;
 public class FastExponentiation {
     
     public static void main(String[] str){
-        System.out.println(getFastExpo(3,3));
+        int pow = -3;
+        int n = 3;
+        double expo = 0.0d;
+        if(pow <0){
+            pow = -1 * pow;
+            expo = 1.0/getFastExpo(pow,n);
+        }else{
+            expo =  getFastExpo(pow,n);
+        }
+        System.out.println(expo);
     }
 
     static int getFastExpo(int pow, int n){
