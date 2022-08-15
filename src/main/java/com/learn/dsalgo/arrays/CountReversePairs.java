@@ -9,8 +9,8 @@ public class CountReversePairs {
     int count = 0;
 
     public static void main(String[] args) {
-        int[] nums = {1,3,2,3,1};
-        //int[] nums = {2,4,3,5,1};
+        //int[] nums = {1,3,2,3,1};
+        int[] nums = {2,4,3,5,1};
         System.out.println(new CountReversePairs().reversePairs(nums));
     }
 
