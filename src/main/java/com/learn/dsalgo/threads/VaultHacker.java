@@ -6,7 +6,7 @@ import java.util.Random;
 
 public class VaultHacker {
 
-     public static final int MAX_PWD  = 100;
+     public static final int MAX_PWD  = 20;
     public static void main(String[] args) {
         Random random = new Random();
         Vault vault = new Vault(random.nextInt(MAX_PWD));
@@ -96,13 +96,14 @@ public class VaultHacker {
 
         public PoliceThread(){
             this.setName(this.getClass().getName());
+            this.setPriority(MIN_PRIORITY);
         }
 
         @Override
         public void run() {
              for(int i=10; i>0 ; i--){
                   try {
-                    Thread.sleep(1000);
+                    Thread.sleep(2000);
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 }
