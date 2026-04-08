@@ -71,4 +71,29 @@ public class CustomLinkedListTest {
        //System.out.println(ll.toString());
        assertEquals("[ 4, null, 3, 2, 1 ]", ll.toString());
     }
+
+    @Test
+      public void shouldFindMiddleWithOddElements(){
+         CustomLinkedList<Integer> ll = new CustomLinkedList<>();
+         
+         ll.addLast(1);
+         ll.addLast(2);
+         ll.addLast(3);
+         ll.addLast(4);
+         ll.addLast(5);
+         assertEquals(Integer.valueOf(3), ll.findMiddle());
+      }
+
+   @Test
+      public void shouldFindMiddleWithEvenElements(){
+         CustomLinkedList<Integer> ll = new CustomLinkedList<>();
+         
+         ll.addLast(1);
+         ll.addLast(2);
+         ll.addLast(3);
+         ll.addLast(4);
+         ll.addLast(5);
+         ll.addLast(6);
+         assertEquals(Integer.valueOf(4), ll.findMiddle());
+       }   
 }

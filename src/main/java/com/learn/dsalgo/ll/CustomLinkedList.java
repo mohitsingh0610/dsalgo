@@ -1,5 +1,7 @@
 package com.learn.dsalgo.ll;
 
+import org.w3c.dom.Node;
+
 public class CustomLinkedList<T> {
 
     private int size = 0;
@@ -146,6 +148,27 @@ public class CustomLinkedList<T> {
           current = next;
         }
         head = prev;
+    }
+    
+    /**
+     * THE BRILLIANT IDEA:
+       slow moves 1 step per iteration
+       fast moves 2 steps per iteration
+       When fast reaches the end, slow is at the middle.
+       (Because slow has traveled exactly HALF the distance)
+     * @return T
+     */
+    public T findMiddle(){
+        if(isEmpty()){
+            return null;
+        }
+        Node<T> slow = head;
+        Node<T> fast = head;
+        while(fast != null && fast.next != null){
+            slow = slow.next;
+            fast = fast.next.next;
+        }
+        return slow.data;
     }
 
     @Override
