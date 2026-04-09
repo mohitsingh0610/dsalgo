@@ -1,6 +1,5 @@
 package com.learn.dsalgo.ll;
 
-import org.w3c.dom.Node;
 
 public class CustomLinkedList<T> {
 
@@ -9,6 +8,14 @@ public class CustomLinkedList<T> {
     private Node<T> head = null;
 
     private Node<T> tail = null;
+
+    public Node<T> getHead(){
+        return head;
+    }
+
+    public Node<T> getTail(){
+        return tail;
+    }
 
     // Return the size of this linked list
     public int size() {
@@ -20,11 +27,11 @@ public class CustomLinkedList<T> {
         return size() == 0;
     }
 
-    private static class Node<T> {
+    public static class Node<T> {
 
-        private T data;
+        public T data;
 
-        private Node<T> next;
+        public Node<T> next;
 
         public Node(T data, Node<T> next) {
             this.data = data;
@@ -131,6 +138,17 @@ public class CustomLinkedList<T> {
         if (isEmpty())
             throw new RuntimeException("Empty list");
         return tail.data;
+    }
+
+    public Node<T> getNodeAt(int index){
+        if(index < 0 || index >= size()){
+            throw new IllegalArgumentException("Invalid index");
+        }
+        Node<T> temp = head;
+        for (int i = 0; i < index; i++) {
+            temp = temp.next;
+        }
+        return temp;
     }
 
     public void reverse(){
